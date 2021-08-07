@@ -1,0 +1,19 @@
+.content-1{
+    margin:auto;
+    position:relative;
+    padding-left: 200px;
+    padding-top: 200px;
+}
+
+.content-2{
+    margin:auto;
+    position:relative;
+    padding-left: 200px;
+    padding-top:    50px;
+}
+
+body{
+    background-image: url("https://cdn.wallpapersafari.com/89/85/xrHgEc.jpg");
+    background-size: cover;
+    height: 100%; 
+}
