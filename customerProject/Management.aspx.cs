@@ -38,11 +38,10 @@ namespace customerProject
 
                 if (newCustomer_address.Text == "" || newCustomer_customerName.Text == "" || newCustomer_email.Text == "" || newCustomer_Phone.Text == "" || newCustomer_CNIC.Text == "")
                 {
-                    if (Page.IsPostBack && SiteMaster.countForModalLoad < 1)
+                    if (Page.IsPostBack)
                     {
                         failedReasonLiteral.Text = "One of the field is still blank.";
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "failModal();", true);
-                        SiteMaster.countForModalLoad++;
                         return;
                     }
                 }

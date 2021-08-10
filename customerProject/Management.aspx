@@ -14,7 +14,7 @@
     <br />
         </div>
     <div class="content-2">
-    <div class="btn-toolbar px-5" role="toolbar">
+    <div class="btn-toolbar px-5" role="toolbar"> 
         <div class="btn-group mr-5" role="group" style="width:360px">
             <asp:Button class="btn btn-primary py-3 px-5 rounded" ID="btnDeleteCustomer" Text="Delete Customer" runat ="server" OnClientClick="return show_deleteCustomer_InitialModal(this);"/>
     </div>

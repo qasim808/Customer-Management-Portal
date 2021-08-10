@@ -1,0 +1,43 @@
+video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+.content{
+    background: gray;
+    height: 560px;
+    opacity: 0.8;
+    width:90%;
+    box-shadow: 3px 3px 3px 3px gray;
+    color: black;
+    position: relative;
+    animation-name: div-slider;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    background-image: url("management-div.png");
+    background-repeat: no-repeat;
+    background-attachment: relative;
+    background-position:center;
+}
+
+.animatebutton{
+    position: relative;
+    animation-name: button-slider;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+}
+
+@keyframes div-slider {
+    0%   { left:0px; top:-500px;}
+    25%  {left:0px; top: 40px; }
+    50% {left:0px; top: 0px;}
+}
+
+@keyframes button-slider{
+    0%   { left:0px; top: 0px;}
+    25%  {left:0px; top: 40px; }
+    50% {left:0px; top:0px;}
+}

@@ -47,10 +47,11 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                  <a class="nav-item nav-link text-dark" href="Management">Management</a>
-                  <a class="nav-item nav-link text-dark" href="customer_list">List Customers</a>
-                  <a class="nav-item nav-link text-dark" href="AdminRequests">Admin Access Requests</a>
-                  <a class="nav-item nav-link text-dark" href="Logout">Logout</a>
+                  <a class="nav-item nav-link text-dark" href="Management" runat="server" id="management">Management</a>
+                  <a class="nav-item nav-link text-dark" href="customer_list" runat="server" id="customers">List Customers</a>
+                  <a class="nav-item nav-link text-dark" href="AdminRequests" runat="server" id="admin">Admin Access Requests</a>
+                  <a class="nav-item nav-link text-dark" href="Logout" runat="server" id="logout">Logout</a>
+                   <a class="nav-item nav-link text-dark" href="Login" runat="server" id="login">Login</a>
             </div>
           </div>
         </nav>
