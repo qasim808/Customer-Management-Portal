@@ -8,14 +8,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - My ASP.NET Application</title>
-
+    
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    
 </head>
 <body>
     <form class="form1" runat="server">
@@ -38,28 +38,23 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-        <nav class="navbar navbar-default navbar-light bg-light fixed-top" style="color:aqua">
+        <nav class="navbar navbar-default navbar-light bg-light fixed-top py-3" style="color:aqua">
             <div class="container">
-                <a class="navbar-brand" href="#">Customer Management Portal</a>
+                <a class="navbar-brand" href="#">
+                    <img src="styles/management-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">  Customer Management Portal
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                 <div class="navbar-nav">
-                  <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                  <a class="nav-item nav-link" href="Management">Management</a>
-                  <a class="nav-item nav-link" href="Login">Login</a>
+                  <a class="nav-item nav-link text-dark" href="Management">Management</a>
+                  <a class="nav-item nav-link text-dark" href="Login">Login</a>
+                  <a class="nav-item nav-link text-dark" href="customer_list">List Customers</a>
+                  <a class="nav-item nav-link text-dark" href="AdminRequests">Admin Access Requests</a>
             </div>
           </div>
-                </div>
         </nav>
-       <!-- <div id="wrapper">
-            <ul class="sidebar">
-                <li><a href="#"></a>Account</li>
-                <li><a href="#"></a>Settings</li>
-                <li><a href="#"></a>Logout</li>
-            </ul>
-        </div> -->
+
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
@@ -70,5 +65,6 @@
         </div>
 
     </form>
+    
 </body>
 </html>

@@ -17,19 +17,6 @@
     stroke: #fff;
     stroke-miterlimit: 10;
     margin: 10% auto;
-    box-shadow: inset 0px 0px 0px #7ac142;
-    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
-  }
-  
-  .checkmark-2 {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    display: block;
-    stroke-width: 2;
-    stroke: #fff;
-    stroke-miterlimit: 10;
-    margin: 10% auto;
     box-shadow: inset 0px 0px 0px #ff0000;
     animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
   }
@@ -55,11 +42,6 @@
     }
   }
   @keyframes fill {
-    100% {
-      box-shadow: inset 0px 0px 0px 30px #7ac142;
-    }
-  }
-  @keyframes fill-1 {
     100% {
       box-shadow: inset 0px 0px 0px 30px #ff0000;
     }

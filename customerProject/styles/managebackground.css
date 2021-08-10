@@ -13,7 +13,9 @@
 }
 
 body{
-    background-image: url("https://cdn.wallpapersafari.com/89/85/xrHgEc.jpg");
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(38,199,149,1) 35%, rgba(29,202,173,1) 50%, rgba(30,202,171,1) 79%, rgba(0,212,255,1) 100%);
     background-size: cover;
+    background-position: center;
     height: 100%; 
 }

@@ -110,12 +110,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminRequests.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="customer_list.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Management.aspx" />
     <Content Include="Content\Site.css" />
@@ -261,7 +263,21 @@
     <Content Include="Site1.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminRequests.aspx.cs">
+      <DependentUpon>AdminRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminRequests.aspx.designer.cs">
+      <DependentUpon>AdminRequests.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="customer_list.aspx.cs">
+      <DependentUpon>customer_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customer_list.aspx.designer.cs">
+      <DependentUpon>customer_list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

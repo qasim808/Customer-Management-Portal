@@ -5,29 +5,29 @@
 .center-login {
     margin:auto;
     width: 40%;
-    height: 400px;
-    padding: 80px;
+    height: 500px;
+    padding-top: 20px;
+    padding-left: 50px;
     position:relative;
-    border-bottom: 20px solid orange;
+    border-bottom: rgb(95, 95, 95) solid 20px;;
     position: relative;
     animation-name: login-slider;
     animation-duration: 10s;
     animation-iteration-count: 1;
     box-shadow: gray;
-    background-color: white;
-    border-top: gray solid 20px;
-    border-left: orange solid 2px;
-    border-right: orange solid 2px;
+    background-color: darkslategray;
+    border-top: rgb(95, 95, 95) solid 20px;
+    color: white;
 }
 
 body{
     background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(189,179,158,1) 35%, rgba(0,212,255,1) 100%);
-    background-size: cover;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,22,31,1) 35%, rgba(0,212,255,1) 100%);  background-size: cover;
     background-position: center;
     height: 100%; 
 }
-.left{
+.left{background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,22,31,1) 35%, rgba(0,212,255,1) 100%);
     background-color: rgb(24, 85, 6);
 }
 @keyframes login-slider {
@@ -47,5 +47,3 @@ body{
     display: inline-block;
     line-height: 1em;
   }
-
-  

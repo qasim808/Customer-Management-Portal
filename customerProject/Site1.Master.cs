@@ -9,7 +9,7 @@ namespace customerProject
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
-        public static bool successfulLogin = true;
+        public static bool successfulLogin = false;
         protected void Page_Load(object sender, EventArgs e)
         {
 
