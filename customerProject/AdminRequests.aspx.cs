@@ -58,6 +58,7 @@ namespace customerProject
 
                     if (SqlHelper.executeAdminSPs("addToMasterLogin", new string[] { email, password }))
                     {
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "completeForm();", true);
                         this.DataBind();
                         if (PendingRequests.Rows.Count == 0)
                         {
@@ -66,14 +67,14 @@ namespace customerProject
                     }
                     else
                     {
-
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "failModal();", true);
                     }
                 }
                 else if (e.CommandName == "Deny")
                 {
                     if (SqlHelper.executeAdminSPs("removeRegistration", new string[] { email, password }))
                     {
-                        //removed...
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "completeForm();", true);
                         this.DataBind();
                         if (PendingRequests.Rows.Count == 0)
                         {
@@ -82,13 +83,13 @@ namespace customerProject
                     }
                     else
                     {
-
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "failModal();", true);
                     }
                 }
             }
             Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
         }
-        protected void On_PreLoad(object sender, EventArgs e)
+        protected void Page_PreRender(object sender, EventArgs e)
         {
             ViewState["CheckRefresh"] = Session["CheckRefresh"];
         }

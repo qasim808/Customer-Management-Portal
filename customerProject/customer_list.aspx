@@ -62,13 +62,13 @@
             <div class="col"></div>
             </div>
         <div class="row">
-            <div class="col-sm-2 display-4" style="font-size:20px;font-weight:400">DEBUG:</div>
+            <div class="col-sm-2 display-4" style="font-size:20px;font-weight:400"></div>
             <div class="col-sm-5 display-4" style="font-size:19px;font-weight:300" id="debug"></div>
             <div class="col-sm-4"></div>
             </div>
     </div>
 </div>
-    <div id="empty-alert" hidden ="true">
+    <div id="empty-alert">
         <div class="row align-items-center">
             <div class="col">
             </div>
@@ -155,11 +155,11 @@
                             <div class="form-row">
                             <div class="form-group col-md-6">
                             <label for="cnic">CNIC</label>
-                                <asp:TextBox CssClass="form-control" ID="delForm_CNIC" placeholder="XXXXX-XXXXXXX-X" runat="server" EnableViewState="true" ReadOnly="true"/>
+                                <asp:TextBox CssClass="form-control" ID="delForm_CNIC" placeholder="XXXXX-XXXXXXX-X" runat="server" EnableViewState="true"/>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="phone-number">Phone Number</label>
-                                <asp:TextBox CssClass="form-control" ID="delForm_phone" placeholder="03XX-XXXXXXX" runat="server" EnableViewState="true" ReadOnly="true"/>
+                                <asp:TextBox CssClass="form-control" ID="delForm_phone" placeholder="03XX-XXXXXXX" runat="server" EnableViewState="true"/>
                             </div>
                             </div>
                  </div>
@@ -254,6 +254,15 @@
             $("#<%= delForm_CNIC.ClientID %>").val(cnic);
             var phone = $('.phone').html();
             $("#<%= delForm_phone.ClientID%>").val(phone);
+            $("#<%= delForm_phone.ClientID%>").attr('readonly', true);
+            $("#<%= delForm_CNIC.ClientID%>").attr('readonly', true);
+        }
+        function set_DelAttr(sender) {
+            var cnic = $('.cnic').html();
+            $("#<%= delForm_CNIC.ClientID %>").val(cnic);
+            var phone = $('.phone').html();
+            $("#<%= delForm_phone%>").val(phone);
+            return true;
         }
         function storeCNIC(sender) {
             $("#<%= tempCNICHolder.ClientID %>").val(cnic);

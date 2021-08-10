@@ -13,7 +13,7 @@ namespace customerProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserName"] == null || Session["pwd"] == null)
+           if (Session["UserName"] == null || Session["pwd"] == null)
             {
                 Response.Redirect("~/Login");
             }
@@ -107,7 +107,9 @@ namespace customerProject
         {
             if (Session["CheckRefresh"].ToString() == ViewState["CheckRefresh"].ToString())
             {
+                
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "popUp_DeleteForm();", true);
+                
                 Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
             }
         }
