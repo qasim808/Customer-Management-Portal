@@ -1,0 +1,78 @@
+
+
+table.mygridview {
+    font-family: Arial, Helvetica, sans-serif;
+    border:none;
+    width: 100%;
+  }
+  
+  table.mygridview td, table.mygridview th {
+    padding: 8px;
+    border:none;
+    
+  }
+  
+  table.mygridview  tr:nth-child(even){
+      background-color: #f2f2f2;
+      
+        display:none;
+    }
+  
+  table.mygridview  th {
+    
+    padding-top: 10px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+    border:none;
+    display:none;
+  }
+
+  .main-content{
+      padding-left: 100px;
+      height: 700px;
+      border-radius: 50px;
+      width:100%;
+      box-shadow: 4px 5px 5px 5px gray;
+      background: white;
+}
+
+body{
+    background: rgb(20,217,223);
+    background: linear-gradient(90deg, rgba(20,217,223,1) 1%, rgba(0,214,249,1) 14%, rgba(85,211,255,1) 23%, rgba(25,242,242,1) 29%, rgba(96,218,223,1) 36%, rgba(3,190,219,1) 43%, rgba(1,211,254,1) 59%, rgba(0,212,255,1) 63%, rgba(35,179,195,1) 96%);
+  }
+
+  table.mygridview  a,
+  table.mygridview  span {
+    display: inline-block;
+    padding: 0px 9px;
+    margin-right: 4px;
+    background: #e9e9e9;
+    font-size: .875em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+table.mygridview  a {
+    background-color:rgb(92, 184, 92);
+    color: white;
+    width:50px;
+    height: 26px;
+    padding-top:2px;
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+table.mygridview span {
+
+    background-color:	rgb(2, 117, 216);
+    color: white;
+    width:50px;
+    height: 26px;
+    padding-top:2px;
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
+}

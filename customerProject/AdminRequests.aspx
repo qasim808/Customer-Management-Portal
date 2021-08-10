@@ -1,7 +1,7 @@
 <%@ Page Title="Admin Requests" Language="C#"  MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminRequests.aspx.cs" Inherits="customerProject.AdminRequests" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" style="position:relative;">
-<link rel="stylesheet" href="styles/gridview.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/adminRegistration.css" type="text/css" media="screen" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <body>
     <br /><br />

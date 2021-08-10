@@ -5,19 +5,21 @@
     <link rel="stylesheet" href="styles/marks.css" type="text/css" media="screen" />
     <div class ="left"></div>
     <div id ="loginContent">
-        <div class ="center-login">
+        <div class ="center-login" style="height:600px;">
             <div class="row">
                 <div class="col-sm-4" ></div>
-                <div class="col-sm-4" ><img src="styles/management-logo.png" width="80" height="80" alt="" style="filter:invert(100%)"></div><br />
+                <div class="col-sm-4" ><img src="styles/management-logo.png" height="80" alt="" style="filter:invert(100%); width: 80px;"></div><br />
                 <p style="padding-left:95px; padding-top: 10px">Customer Management Portal</p>
                 <div class="col-sm-4" ></div>
                 </div><hr />
             <label for="exampleInputEmail1" class="display-4" style="font-size:15px">Email address</label><br />
-            <asp:TextBox class="form-control h4" ID="emailTxt" runat="server" EnableViewState="true"/>
+            <asp:TextBox class="form-control h4 display-4" ID="emailTxt" runat="server" style="font-size:15px" EnableViewState="true" onblur="return checkEmail(this)"/>
+            <p class ="small text-danger display-4" id="emailError" style="font-size:15px;"></p>
             <p id="errorMsg"></p>
             <label for="exampleInputPassword1" class="display-4" style="font-size:15px">Password</label>
-            <asp:TextBox CssClass="form-control h4" ID="passwordTxt" runat="server" ToolTip="Enter Password" TextMode="Password"/><br />
-            <asp:Button class="btn btn btn-outline-success" ID="btnSubmit" runat="server" Text="Login" OnClick="onButton_Submit" /><br /><br />
+            <asp:TextBox CssClass="form-control h4" ID="passwordTxt" runat="server" TextMode="Password" EnableViewState="true" onblur="return ValidPasssword(this)"/><br />
+            <p class ="small text-danger display-4" id="passwordError" style="font-size:15px;"></p>
+            <asp:Button class="btn btn btn-outline-success" ID="btnSubmit" runat="server" Text="Login" OnClick="onButton_Submit" OnClientClick="return chkValidation();"/><br /><br />
             <p class ="small"> New? Register <a href="javascript:popUp_UpdateCustomerForm_2(self);"> now.</a></p>
             <br />
         </div>
@@ -87,12 +89,31 @@
     <script>
         function checkEmail() {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            var clientEmail = document.getElementById("<%=emailTxt.ClientID%>");
-            if (!re.test(clientEmail.value)) {
-
+            var email = $("#<%= emailTxt.ClientID%>").val();
+            if (!re.test(email)) {
+                $('#emailError').text('* Incorrect Email');
                 return false;
             }
+            $('#emailError').text('');
             return true;
+        }
+        function ValidPassword() {
+            var password = $("#<%= passwordTxt.ClientID%>").val();
+            var re = '';
+            if (re.test(password)) {
+                $('#passwordError').text('* Incorrect Password');
+                return false;
+            }
+            $('#passwordError').text('');
+            return true;
+        }
+        function chkValidation() {
+            var noErrors = true;
+            var clientEmail = $("#<%= emailTxt.ClientID%>").val();
+            if (!checkEmail() && !ValidPassword()) {
+                noErrors = false;
+            }
+            return noErrors;
         }
 
         var textWrapper = document.querySelector('.ml12');

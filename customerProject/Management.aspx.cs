@@ -13,7 +13,9 @@ namespace customerProject
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserName"] == null || Session["pwd"] == null)
+            {
                 Response.Redirect("~/Login");
+            }
 
             if (!IsPostBack)
             {
@@ -118,6 +120,59 @@ namespace customerProject
                 Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
             }
         }
+
+        protected void btnHandleDeleterCustomer_Proceed(object sender, EventArgs e)
+        {
+            if (Session["CheckRefresh"].ToString() == ViewState["CheckRefresh"].ToString())
+            {
+                if (deleteForm_customerCNIC.Text != "")
+                {
+                    DataAccess SqlHelper = new DataAccess();
+                    SqlHelper.isConnectionOpen();
+                    string queryForDeletion = string.Format("SELECT * FROM dbo.customers WHERE customerCNIC = '{0}'", deleteForm_customerCNIC.Text);
+                    string[] values = SqlHelper.executeQuery(queryForDeletion);
+                    if (values != null)
+                    {
+                        delFormFinal_CNIC.Text = values[0];
+                        delFormFinal_Phone.Text = values[1];
+                        delFormFinal_Name.Text = values[2];
+                        delFormFinal_Address.Text = values[3];
+                        delFormFinal_Email.Text = values[4];
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "show_delForm_Final();", true);
+                        SqlHelper.closeConnection();
+                    }
+                    else
+                    {
+                        failedReasonLiteral.Text = "No such record exists.";
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "failModal();", true);
+                    }
+                }
+                Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
+
+            }
+        }
+        protected void btn_DeleteConfirm(object sender, EventArgs e)
+        {
+            if (Session["CheckRefresh"].ToString() == ViewState["CheckRefresh"].ToString())
+            {
+                TextBox[] objs = new TextBox[1];
+                DataAccess SqlHelper = new DataAccess();
+                objs[0] = deleteForm_customerCNIC;
+
+                if (SqlHelper.executeSP("deleteCustomer", objs))
+                {
+                    successLiteral.Text = "Customer Deleted.";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "completeForm();", true);
+                }
+                else
+                {
+                    failedReasonLiteral.Text = "Not able to proceed.";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "failModal();", true);
+                }
+
+                Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
+            }
+        }
         protected void Page_PreRender(object sender, EventArgs e)
         {
             ViewState["CheckRefresh"] = Session["CheckRefresh"];
@@ -126,5 +181,6 @@ namespace customerProject
         {
             Response.Redirect("customer_list");
         }
+        
     }
 }
