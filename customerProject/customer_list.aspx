@@ -2,16 +2,24 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" style="position:relative;">
-    <link rel="stylesheet" href="styles/gridview.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="styles/customerList.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="styles/marks.css" type="text/css" media="screen" />
     <br /><br />
 <html xmlns="http://www.w3.org/1999/xhtml">
     <body>
-    <div class="container">
+<div class ="main-content">
+    <br />
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-2"> <img src="styles/management-logo.png" width="40" height="40" class="d-inline-block align-top" alt=""></div>
+            <div class="col-sm-4 px-0 py-2 display-4" style="font-size:20px; font-weight: 400"><p> Customer Management</p>
+            </div>
+        </div><hr />
+        <br />
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4 display-4" id="customer_name" style="font-size:20px;font-weight:700"></div>
-            <div class="col-sm-4"><img src="https://www.pngfind.com/pngs/m/304-3045489_png-file-svg-blank-person-transparent-png.png" width="100" height="100"/></div>
+            <div class="col-sm-4 px-5"><img src="https://www.pngfind.com/pngs/m/304-3045489_png-file-svg-blank-person-transparent-png.png" width="100" height="100"/></div>
         </div>
         <div class="row">
             <div class="col-sm-2 display-4" style="font-size:20px;font-weight:400">Customer CNIC: </div>
@@ -59,6 +67,19 @@
             <div class="col-sm-4"></div>
             </div>
     </div>
+</div>
+    <div id="empty-alert" hidden ="true">
+        <div class="row align-items-center">
+            <div class="col">
+            </div>
+            <div class="col-8 display-4" style="font-size:40px; padding-left:160px">
+                <p> No records to display. </p>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </div>
+    <asp:Literal ID="msgLiteral" runat="server" />
         <hr />
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" AllowPaging="true"
             OnPageIndexChanging="OnPageIndexChanging" PageSize="1" CssClass ="mygridview">
@@ -134,11 +155,11 @@
                             <div class="form-row">
                             <div class="form-group col-md-6">
                             <label for="cnic">CNIC</label>
-                                <asp:TextBox CssClass="form-control" ID="delForm_CNIC" placeholder="XXXXX-XXXXXXX-X" runat="server" EnableViewState="true"/>
+                                <asp:TextBox CssClass="form-control" ID="delForm_CNIC" placeholder="XXXXX-XXXXXXX-X" runat="server" EnableViewState="true" ReadOnly="true"/>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="phone-number">Phone Number</label>
-                                <asp:TextBox CssClass="form-control" ID="delForm_phone" placeholder="03XX-XXXXXXX" runat="server" EnableViewState="true"/>
+                                <asp:TextBox CssClass="form-control" ID="delForm_phone" placeholder="03XX-XXXXXXX" runat="server" EnableViewState="true" ReadOnly="true"/>
                             </div>
                             </div>
                  </div>
@@ -148,6 +169,7 @@
                 </div>
             </div>
         </div>
+    </div>
 <div id="checkModal" class="modal fade" tabindex="-1" role="dialog">
 <div class="modal-dialog" role="document">
 <div class="modal-content">
@@ -184,15 +206,7 @@
         </div>
         </div>
     </div>
-        <div class="row align-items-center">
-            <div class="col">
-            </div>
-            <div class="col-8 display-4" style="font-size:40px; padding-left:160px">
-                <asp:Literal ID="msgLiteral" runat="server" />
-            </div>
-            <div class="col">
-            </div>
-        </div>
+    
     <script>
         $(document).ready(function () {
            $('.cnic').each(function () {
@@ -258,7 +272,15 @@
             }, 3000);
             return false;
         }
-        </script>
+        function disableContainer(sender) {
+            $('.main-content').hide();
+            $('#empty-alert').show();
+        }
+        function enableContainer(sender) {
+            $('.main-content').show();
+            $('#empty-alert').hide();
+        }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
 </body>

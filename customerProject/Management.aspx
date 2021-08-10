@@ -16,10 +16,10 @@
     <div class="content-2">
     <div class="btn-toolbar px-5" role="toolbar">
         <div class="btn-group mr-5" role="group" style="width:360px">
-    <asp:Button class="btn btn-success py-3 px-5 rounded" ID="btnDelCustomer" Text="Delete Customer" runat ="server" />
+            <asp:Button class="btn btn-primary py-3 px-5 rounded" ID="btnDeleteCustomer" Text="Delete Customer" runat ="server" OnClientClick="return show_deleteCustomer_InitialModal(this);"/>
     </div>
         <div class="btn-group mr-5" role="group" style="width:350px">
-            <asp:Button class="btn btn-success py-3 px-5 rounded" ID="btnListCustomers" Text="List All Customers" runat ="server" onClick="btn_listCustomers"/>
+            <asp:Button class="btn btn-primary py-3 px-5 rounded" ID="btnListCustomers" Text="List All Customers" runat ="server" onClick="btn_listCustomers"/>
             </div></div>
         </div>
 
@@ -39,7 +39,8 @@
                             <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="name">Customer Name</label>
-                                <asp:TextBox CssClass="form-control" ID="newCustomer_customerName" runat="server" placeholder="Customer Name" EnableViewState="true"/>
+                                <asp:TextBox CssClass="form-control" ID="newCustomer_customerName" runat="server" placeholder="Customer Name" EnableViewState="true" onkeypress="return validateName()"/>
+                                <p class="small text-danger display-4" id="nameChk" style="font-size:15px"></p>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="phone-number">Phone Number</label>
@@ -53,7 +54,8 @@
                             </div>
                             <div class="form-group col md-4">
                             <label for="customer-email-address">Email Address</label>
-                                <asp:TextBox CssClass="form-control" ID="newCustomer_email" placeholder="Email Address" EnableViewState="true" runat="server" />
+                                <asp:TextBox CssClass="form-control" ID="newCustomer_email" placeholder="Email Address" EnableViewState="true" runat="server" onblur="return checkEmail()"/>
+                                <p class="small text-danger display-4" id="emailChk" style="font-size:15px"></p>
                             </div>
                             </div>
                             <!-- <div class="form-row">
@@ -74,7 +76,7 @@
                 </div>
                 <div class="modal-footer">
                     <asp:Button type="button" class="btn btn-danger" data-dismiss="modal" Text="Cancel" runat="server"/>
-                    <asp:Button type="button" id="AddNewCustomer_btnConfirm" class="btn btn-success" runat="server" Text="Submit" onClick="btnHandleNewCustomer_Submit"  AutoPostback = "false"/>
+                    <asp:Button type="button" id="AddNewCustomer_btnConfirm" class="btn btn-success" runat="server" Text="Submit" onClick="btnHandleNewCustomer_Submit"  onClientClick="return chkValidation()"/>
                 </div>
             </div>
         </div>
@@ -169,6 +171,86 @@
     </div>
         <asp:Literal ID="Literal2" runat="server"></asp:Literal>        
 </div>
+
+  <div class ="deleteCustomer">          
+      <div id="deleteCustomer_ModalPopUp" class="modal fade" role="form">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h1 class="display-4 text-danger lead text-center">Delete Customer Form</h1>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">
+                          <span id="spnTitle-delete">
+                          </span>
+                      </h4>
+                  </div>
+                  <div class="modal-body">
+                              <div class="form-row">
+                              <div class="form-group col-md-6">
+                                  <label for="name">Customer CNIC</label>
+                                  <asp:TextBox CssClass="form-control" ID="deleteForm_customerCNIC" runat="server" placeholder="XXXX-XXXXXXX-X" EnableViewState="true"/>
+                              </div>
+                              </div>
+                 </div>
+                  <div class="modal-footer">
+                      <asp:Button type="button" class="btn btn-success" data-dismiss="modal" Text="Cancel" runat="server"/>
+                      <asp:Button type="button" id="deleteForm_Proceed" class="btn btn-outline-danger" runat="server" Text="Proceed" OnClick="btnHandleDeleterCustomer_Proceed"/>
+                  </div>
+            </div>
+          <asp:Literal ID="deleteLiteral" runat="server"></asp:Literal>        
+    </div>
+   </div>
+  </div>
+<div class ="deleteCustomerFinal">          
+  <div id="deleteCustomerForm_Final" class="modal fade" role="form">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h1 class="display-4 text-success lead text-center">Customer Information</h1>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">
+                      <span id="spnTitle_1">
+                      </span>
+                  </h4>
+              </div>
+              <div class="modal-body">
+                          <div class="form-row">
+                          <div class="form-group col-md-6">
+                              <label for="name">Customer Name</label>
+                              <asp:TextBox CssClass="form-control" ID="delFormFinal_Name" runat="server" placeholder="Customer Name" EnableViewState="true" ReadOnly="true"/>
+                          </div>
+                          <div class="form-group col-md-6">
+                              <label for="phone-number">Phone Number</label>
+                              <asp:TextBox CssClass="form-control" ID="delFormFinal_Phone" placeholder="03XX-XXXXXXX" runat="server" EnableViewState="true" ReadOnly="true"/>
+                          </div>
+                          </div>
+                      <div class="form-row">
+                          <div class="form-group col-md-6">
+                          <label for="cnic">CNIC</label>
+                              <asp:TextBox CssClass="form-control" ID="delFormFinal_CNIC" placeholder="XXXXX-XXXXXXX-X" runat="server" EnableViewState="true" ReadOnly="true"/>
+                          </div>
+                          <div class="form-group col md-4">
+                          <label for="customer-email-address">Email Address</label>
+                              <asp:TextBox CssClass="form-control" ID="delFormFinal_Email" placeholder="Email Address" EnableViewState="true" runat="server" ReadOnly="true"/>
+                          </div>
+                          </div>
+                      <div class="form-group">
+                          <label for ="inputAddress">Address</label>
+                          <asp:TextBox CssClass="form-control" ID="delFormFinal_Address" placeholder="Address (House #, St #, ..)" runat="server" EnableViewState="true" ReadOnly="true" />              
+                      </div>
+
+              </div>
+              <div class="modal-footer">
+                  <asp:Button type="button" class="btn btn-success" data-dismiss="modal" Text="Cancel" runat="server"/>
+                  <asp:Button type="button" id="Button2" class="btn btn-outline-danger" runat="server" Text="Confirm" OnClick="btn_DeleteConfirm"/>
+              </div>
+          </div>
+      </div>
+  </div>
+      <asp:Literal ID="Literal11" runat="server"></asp:Literal>        
+</div>
+
+
 <div id="checkModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -237,9 +319,44 @@
              }, 3000);
              return false;
          }
-        </script>
+         function show_deleteCustomer_InitialModal(sender) {
+             $('#deleteCustomer_ModalPopUp').modal('show');
+             return false;
+         }
+         function show_delForm_Final() {
+             $('#deleteCustomerForm_Final').modal('show');
+             return false;
+         }
+     </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
         <script type="text/javascript">
+            function validateName() {
+                var name = $("#<%= newCustomer_customerName.ClientID%>").val();
+                if (/\d/.test(name)) {
+                    $('#nameChk').text('* Please enter valid customer name');
+                    return false;
+                }
+                else {
+                    $('#nameChk').text('');
+                    return true;
+                }
+            }
+            function checkEmail() {
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                var email = $("#<%= newCustomer_email.ClientID%>").val();
+                if (!re.test(email)) {
+                    $('#emailChk').text('* Incorrect Email');
+                    return false;
+                }
+                $('#emailChk').text('');
+                return true;
+            }
+            function chkValidation() {
+                if (validateName() && checkEmail()) {
+                    return true;
+                }
+                return false;
+            }
             $(document).ready(function () {
                 $("#<%= updateForm_CustomerCNIC.ClientID%>").mask("99999-9999999-9");
             });
@@ -251,6 +368,9 @@
             });
             $(document).ready(function () {
                 $("#<%= newCustomer_Phone.ClientID %>").mask("0399-99999999");
+            });
+            $(document).ready(function () {
+                $("#<%= deleteForm_customerCNIC.ClientID%>").mask("99999-9999999-9");
             });
         </script>
 </asp:Content>

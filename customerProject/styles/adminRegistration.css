@@ -1,7 +1,11 @@
+ 
+  .hiddenBtn{
+    display:none;
+    font-display: none;
+  }
 
   table.adminGrid {
     font-family: Arial, Helvetica, sans-serif;
-    border:none;
     width: 100%;
   }
   
@@ -14,20 +18,13 @@
   table.adminGrid  tr:nth-child(even){
       background-color: #f2f2f2;
       
-        display:none;
     }
-  
-  table.adminGrid tr:hover {
-      
-  }
-  
   table.adminGrid  th {
     
     padding-top: 10px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04AA6D;
+    background-color: #2273b4;
     color: white;
     border:none;
-    display:none;
   }

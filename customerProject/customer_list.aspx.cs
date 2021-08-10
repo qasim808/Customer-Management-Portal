@@ -21,6 +21,15 @@ namespace customerProject
             {
                 Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
                 this.BindGrid();
+                if (GridView1.Rows.Count == 0)
+                {
+                   Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "disableContainer();", true);
+                    //msgLiteral.Text = "No records to display.";
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "enableContainer();", true);
+                }
             }
         }
         private void BindGrid()
@@ -83,7 +92,8 @@ namespace customerProject
                     this.BindGrid();
                     if (GridView1.Rows.Count == 0)
                     {
-                        msgLiteral.Text = "No records to display.";
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "disableContainer();", true);
+                        //msgLiteral.Text = "No records to display.";
                     }
                 }
                 else
