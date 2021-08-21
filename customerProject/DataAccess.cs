@@ -36,7 +36,6 @@ namespace customerProject
         }
         public bool executeSP(string procedureName, TextBox [] objs)
         {
-
             SqlCommand cmd = new SqlCommand(procedureName, dbConn);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             if (!procedureName.Equals("deleteCustomer"))
@@ -89,7 +88,6 @@ namespace customerProject
                 
             }
         }
-
         public string[] executeQuery(string query)
         {
             SqlCommand cmd = new SqlCommand(query, dbConn);
