@@ -1,10 +1,10 @@
 <%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="customerProject._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <link rel="stylesheet" href="styles/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/styles/default.css" type="text/css" media="screen" />
     <br /><br /><br /> <br /><br /><br />
         <video autoplay muted loop id="myVideo">
-             <source src="styles/video.mp4" type="video/mp4">
+             <source src="/styles/video.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
             </video>
     <div class="container">

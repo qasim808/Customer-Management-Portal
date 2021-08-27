@@ -12,7 +12,7 @@ namespace customerProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserName"] == null || Session["pwd"] == null)
+            if (System.Web.HttpContext.Current.User == null || !System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
                 Response.Redirect("~/Login");
 
             if (!Page.IsPostBack)

@@ -15,6 +15,7 @@ namespace customerProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            FormsAuthentication.SignOut();
             if (Session["UserName"] != null)
             {
                 Response.Redirect("Management");
@@ -39,22 +40,20 @@ namespace customerProject
                             SqlDataReader reader = command.ExecuteReader();
                             if (reader.HasRows)
                             {
-                                if (Session["UserName"] == null || (string)Session["UserName"] != emailTxt.Text)
-                                {
-                                    Session["UserName"] = emailTxt.Text;
-                                    Session["Pwd"] = passwordTxt.Text;
-                                    Response.Redirect("~/Management");
-                                }
-                                else
-                                {
-                                    failedReasonLiteral.Text = "User is already logged in.";
-                                    Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "failModal();", true);
-                                    //Response.Redirect("~/Login");
-                                }
+                                /*Session["UserName"] = emailTxt.Text;
+                                Session["Pwd"] = passwordTxt.Text;
+                                Response.Redirect("~/Management");*/
+                                FormsAuthentication.RedirectFromLoginPage(emailTxt.Text, false);
+                                /* else
+                                 {
+                                     failedReasonLiteral.Text = "User is already logged in.";
+                                     Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "failModal();", true);
+                                     //Response.Redirect("~/Login");
+                                 }*/
                             }
                             else
                             {
-                                failedReasonLiteral.Text = "No such user exists.";
+                                failedReasonLiteral.Text = "Wrong Credentials";
                                 Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "failModal();", true);
                                 
                                 //Response.Redirect("~/Login");

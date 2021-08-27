@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Web.Security;
 
 namespace customerProject
 {
@@ -12,12 +13,13 @@ namespace customerProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserName"] == null || Session["pwd"] == null)
+           /* if (Session["UserName"] == null || Session["pwd"] == null)
             {
                 Response.Redirect("~/Login");
-            }
-
-            if (!IsPostBack)
+            }*/
+           if (System.Web.HttpContext.Current.User == null || !System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+                Response.Redirect("~/Login");
+           if (!IsPostBack)
             {
                 Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
             }

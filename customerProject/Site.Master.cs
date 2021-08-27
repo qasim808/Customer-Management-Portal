@@ -12,13 +12,14 @@ namespace customerProject
         protected void Page_Load(object sender, EventArgs e)
         {
             string type = this.Page.GetType().Name.ToString();
-            if (type == "default_aspx")
+            if (type == "login_default_aspx")
             {
                 management.Visible = false;
                 customers.Visible = false;
                 admin.Visible = false;
                 logout.Visible = false;
                 login.Visible = true;
+                grid.Visible = false;
             }
             else
             {

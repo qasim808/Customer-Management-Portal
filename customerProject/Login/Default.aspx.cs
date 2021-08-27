@@ -15,7 +15,7 @@ namespace customerProject
         }
         protected void btn_RedirectHandle(object sender, EventArgs e)
         {
-            Response.Redirect("~/Login");
+            Response.Redirect("~/Login/Login");
         }
     }
 }

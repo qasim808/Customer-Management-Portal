@@ -1,0 +1,28 @@
+table.customerGrid {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    box-shadow: 2px 2px 5px 2px gray;
+    border:none;
+  }
+  
+  table.customerGrid td, table.customerGrid th {
+    padding: 8px;
+    border:none;
+    
+  }
+  
+  table.customerGrid  tr:nth-child(even){
+      background-color: #f2f2f2;
+      
+    }
+  table.customerGrid  th {
+    
+    padding-top: 10px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #12bebe;
+    color: white;
+    border:0px 0.5px solid rgba(128, 128, 128, 0.452);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 2px 2px 5px 5px gray;
+  }

@@ -4,7 +4,7 @@
 
 <html lang="en">
 <head runat="server">
-    <link rel="stylesheet" href="styles/master.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/styles/master.css" type="text/css" media="screen" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - My ASP.NET Application</title>
@@ -41,7 +41,7 @@
         <nav class="navbar navbar-default navbar-light bg-light fixed-top py-3" style="color:aqua">
             <div class="container">
                 <a class="navbar-brand" href="Management">
-                    <img src="styles/management-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">  Customer Management Portal
+                    <img src="/styles/management-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">  Customer Management Portal
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -50,8 +50,9 @@
                   <a class="nav-item nav-link text-dark" href="Management" runat="server" id="management">Management</a>
                   <a class="nav-item nav-link text-dark" href="customer_list" runat="server" id="customers">List Customers</a>
                   <a class="nav-item nav-link text-dark" href="AdminRequests" runat="server" id="admin">Admin Access Requests</a>
+                    <a class="nav-item nav-link text-dark" href="CustomerGrid" runat="server" id="grid">Customer Grid</a>
                   <a class="nav-item nav-link text-dark" href="Logout" runat="server" id="logout">Logout</a>
-                   <a class="nav-item nav-link text-dark" href="Login" runat="server" id="login">Login</a>
+                  <a class="nav-item nav-link text-dark" href="Login/Login" runat="server" id="login">Login</a>
             </div>
           </div>
         </nav>
@@ -61,7 +62,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Qasim Bhatti</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Customer Portal</p>
             </footer>
         </div>
 

@@ -31,8 +31,11 @@ namespace customerProject
         }
         public SqlDataReader executeFetchQuery(string query)
         {
+            closeConnection();
+            dbConn.Open();
             SqlCommand cmd = new SqlCommand(query, dbConn);
-            return cmd.ExecuteReader().HasRows ? cmd.ExecuteReader(): null;
+            SqlDataReader reader = cmd.ExecuteReader();
+            return reader;
         }
         public bool executeSP(string procedureName, TextBox [] objs)
         {
@@ -82,10 +85,45 @@ namespace customerProject
                     {
                         adapt.Fill(table);
                         return table;
-                        
                     }
                 }
                 
+            }
+        }
+        public DataTable searchBarSP(string name)
+        {
+            SqlCommand cmd = new SqlCommand("searchBarResult", dbConn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@name", name);
+            using (cmd)
+            {
+                using (SqlDataAdapter adapt = new SqlDataAdapter())
+                {
+                    adapt.SelectCommand = cmd;
+                    using (DataTable table = new DataTable())
+                    {
+                        adapt.Fill(table);
+                        return table;
+                    }
+                }
+            }
+        }
+        public DataTable customerGridSP(int pageNo)
+        {
+            SqlCommand cmd = new SqlCommand("getPagedNextData", dbConn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@pageNo", pageNo);
+            using (cmd)
+            {
+                using (SqlDataAdapter adapt = new SqlDataAdapter())
+                {
+                    adapt.SelectCommand = cmd;
+                    using (DataTable table = new DataTable())
+                    {
+                        adapt.Fill(table);
+                        return table;
+                    }
+                }
             }
         }
         public string[] executeQuery(string query)
@@ -126,6 +164,7 @@ namespace customerProject
                 }
             }
         }
+        
         public DataAccess()
         {
             var connectionFromConfiguration = WebConfigurationManager.ConnectionStrings["DBConn"];

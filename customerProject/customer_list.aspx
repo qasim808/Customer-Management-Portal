@@ -4,7 +4,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" style="position:relative;">
     <link rel="stylesheet" href="styles/customerList.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="styles/marks.css" type="text/css" media="screen" />
-    <br /><br />
+    <br /><br /><br />
 <html xmlns="http://www.w3.org/1999/xhtml">
     <body>
 <div class ="main-content">
@@ -13,6 +13,16 @@
         <div class="row">
             <div class="col-sm-2"> <img src="styles/management-logo.png" width="40" height="40" class="d-inline-block align-top" alt=""></div>
             <div class="col-sm-4 px-0 py-2 display-4" style="font-size:20px; font-weight: 400"><p> Customer Management</p>
+            </div>
+            <div class="col-md-auto">
+                <div class="input-group">
+                    <br />
+                    <div class="form-outline">
+                <asp:TextBox ID="searchBar" CssClass="form-control" runat="server"/>
+                    </div>
+                <asp:Button runat="server" ID="initiateSearch" Text="Search" CssClass="btn btn-primary display-4" style="font-size:15px" onClick="initiateSearch_BtnClick"/>
+                <asp:Button runat ="server" ID="reset" Text="Reset" CssClass ="btn btn-outline-danger display-4" OnClick="reset_BtnClick" />
+                    </div>
             </div>
         </div><hr />
         <br />
@@ -59,7 +69,9 @@
             <div class="col"></div>
             <div class="col"></div>
             <asp:Button class ="btn btn-outline-danger col rounded" style="width:20px;" ID ="btn_deleteCustomer" Text ="Delete" runat="server" OnClick="btn_deleteHelper"/>
-            <div class="col"></div>
+            <div class="col">
+                <asp:Button ID="checkbtn" runat="server" style="display:none" Text ="1" />
+            </div>
             </div>
         <div class="row">
             <div class="col-sm-2 display-4" style="font-size:20px;font-weight:400"></div>
@@ -281,14 +293,15 @@
             }, 3000);
             return false;
         }
-        function disableContainer(sender) {
+        /*function disableContainer(sender) {
             $('.main-content').hide();
             $('#empty-alert').show();
         }
         function enableContainer(sender) {
             $('.main-content').show();
             $('#empty-alert').hide();
-        }
+        }*/
+        $('#empty-alert').hide();
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 

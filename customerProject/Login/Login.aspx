@@ -1,14 +1,14 @@
 <%@ Page Title="Login" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="customerProject.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <link rel="stylesheet" href="styles/login-2.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="styles/marks.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/styles/login-2.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/styles/marks.css" type="text/css" media="screen" />
     <div class ="left"></div>
     <div id ="loginContent">
         <div class ="center-login" style="height:600px;">
             <div class="row">
                 <div class="col-sm-4" ></div>
-                <div class="col-sm-4" ><img src="styles/management-logo.png" height="80" alt="" style="filter:invert(100%); width: 80px;"></div><br />
+                <div class="col-sm-4" ><img src="/styles/management-logo.png" height="80" alt="" style="filter:invert(100%); width: 80px;"></div><br />
                 <p style="padding-left:95px; padding-top: 10px">Customer Management Portal</p>
                 <div class="col-sm-4" ></div>
                 </div><hr />

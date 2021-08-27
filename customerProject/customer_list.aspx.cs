@@ -13,11 +13,11 @@ namespace customerProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           if (Session["UserName"] == null || Session["pwd"] == null)
+           /*if (Session["UserName"] == null || Session["pwd"] == null)
             {
                 Response.Redirect("~/Login");
             }
-            else if (!this.IsPostBack)
+            else*/ if (!this.IsPostBack)
             {
                 Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
                 this.BindGrid();
@@ -41,10 +41,33 @@ namespace customerProject
                 GridView1.DataBind();
             }
         }
+        private bool BindSearchGrid()
+        {
+            string name = searchBar.Text;
+            DataAccess sqlHelper = new DataAccess();
+            DataTable table = sqlHelper.searchBarSP(name);
+            if (table.Rows.Count > 0)
+            {
+                using (table)
+                {
+                    GridView1.DataSource = table;
+                    GridView1.DataBind();
+                    return true;
+                }
+            }
+            return false;
+        }
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
-            this.BindGrid();
+            if (checkbtn.Text == "1")
+            {
+                this.BindGrid();
+            }
+            else
+            {
+                BindSearchGrid();
+            }
         }
         protected void btn_handleUpdate(object sender, EventArgs e)
         {
@@ -112,6 +135,24 @@ namespace customerProject
                 
                 Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
             }
+        }
+        protected void initiateSearch_BtnClick(object sender, EventArgs e)
+        {
+            if (BindSearchGrid())
+            {
+                checkbtn.Text = "2";
+            }
+            else
+            {
+                checkbtn.Text = "1";
+                //no user found.
+            }
+        }
+        protected void reset_BtnClick(object sender, EventArgs e)
+        {
+            this.BindGrid();
+            checkbtn.Text = "1";
+
         }
         protected void Page_PreRender(object sender, EventArgs e)
         {
