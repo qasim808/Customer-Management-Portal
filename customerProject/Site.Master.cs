@@ -12,7 +12,7 @@ namespace customerProject
         protected void Page_Load(object sender, EventArgs e)
         {
             string type = this.Page.GetType().Name.ToString();
-            if (type == "login_default_aspx")
+            if (type == "login_default_aspx" && !System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 management.Visible = false;
                 customers.Visible = false;
