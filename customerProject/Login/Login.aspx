@@ -24,8 +24,8 @@
                         
                     </div>
                 </div>
-                <div class="bottom text-center mb-5">
-                    <p class="sm-text mx-auto mb-3">Don't have an account? <a href="javascript:popUp_UpdateCustomerForm_2(self);"> Register now.</a></p>
+                <div class="bottom text-center mb-2">
+                    <p class="sm-text mx-auto mb-0">Don't have an account? <a href="javascript:popUp_UpdateCustomerForm_2(self);"> Register now.</a></p>
                 </div>
             </div>
             <div class="card card2">

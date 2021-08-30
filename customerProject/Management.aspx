@@ -7,11 +7,11 @@
 <div class="container px-4 py-5 mx-auto" style="height: 96.8vh;">
     <div class="card card0"style="height: 90vh;"">
         <div class="d-flex flex-lg-row flex-column-reverse">
-            <div class="card card1" style="width: 14%;height: 90vh;background-color: rgba(9, 192, 100, 0.712);">
+            <div class="card card1" style="width: 14%;height: 90vh;background-color: rgba(255, 166, 0, 0.712);">
                 <div class="row justify-content-center my-auto">
                 </div>
             </div>
-            <div class="card card3" style="overflow-x: hidden;">
+            <div class="card card3" style="overflow-x: hidden;box-shadow: 15px 15px 25px 15px gray;">
                 <hr>
                 <div class="my-5 px-3" style="width: 89vw;">
                     <div class="btn-toolbar px-5" role="toolbar">

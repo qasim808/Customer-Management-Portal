@@ -1,6 +1,7 @@
-body {
+html, body {
     color: #000;
     overflow-x: hidden;
+    magin:0;
     height: 100%;
     background-image: linear-gradient(to right, #1c5968, #f8f8f8);
     background-repeat: no-repeat
@@ -103,7 +104,7 @@ a:hover {
 @media screen and (max-width: 992px) {
     .card1 {
         width: 100%;
-        padding: 40px 30px 10px 30px
+        padding: 40px 30px 10px 30px;
     }
 
     .card2 {
