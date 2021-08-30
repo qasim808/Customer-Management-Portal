@@ -1,27 +1,45 @@
 <%@ Page Title="Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Management.aspx.cs" Inherits="customerProject.Contact" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <link rel="stylesheet" href="styles/managebackground.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="styles/marks.css" type="text/css" media="screen" />
-    <div class="content-1">
-    <div class="btn-toolbar px-5" role="toolbar">
-        <div class="btn-group mr-5" role="group" style="width:350px">
-    <asp:Button class ="btn btn-primary py-3 px-5 rounded" ID ="btnAddCustomer" Text ="Add New Customer" runat="server"  OnClientClick="return popUp_AddNewCustomer(this);"/>
+    <link rel="stylesheet" href="/styles/managebackground.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/styles/marks.css" type="text/css" media="screen" />
+
+<div class="container px-4 py-5 mx-auto" style="height: 96.8vh;">
+    <div class="card card0"style="height: 90vh;"">
+        <div class="d-flex flex-lg-row flex-column-reverse">
+            <div class="card card1" style="width: 14%;height: 90vh;background-color: rgba(9, 192, 100, 0.712);">
+                <div class="row justify-content-center my-auto">
+                </div>
             </div>
-            <div class="btn-group mr-5" role="group" style="width:350px">
-    <asp:Button class ="btn btn-primary py-3 px-5 rounded" ID ="btnUpdateCustomer" Text ="Update Customer" runat="server" OnClientClick="return popUp_UpdateCustomer(this);"/>
+            <div class="card card3" style="overflow-x: hidden;">
+                <hr>
+                <div class="my-5 px-3" style="width: 89vw;">
+                    <div class="btn-toolbar px-5" role="toolbar">
+                <div class="btn-group mr-5" role="group" style="width:430px">
+                    <asp:Button runat="server" CssClass="btn btn-outline-info btn-lg" ID ="btnAddCustomer" style="width:inherit;" Text ="Add New Customer" OnClientClick="return popUp_AddNewCustomer(this);"/>
+                 </div>
+                <div class="btn-group mr-5" role="group" style="width:430px">
+                    <asp:Button CssClass="btn btn-outline-info btn-lg" ID ="btnUpdateCustomer" Text ="Update Customer" runat="server" OnClientClick="return popUp_UpdateCustomer(this);"/>
                 </div></div>
-    <br />
+                    <br><br><br/><hr><br><br>
+                    <div class="btn-toolbar px-5" role="toolbar"> 
+                        <div class="btn-group mr-5" role="group" style="width:430px">
+                            <asp:Button CssClass="btn btn-outline-info btn-lg" ID="btnDeleteCustomer" Text="Delete Customer" runat ="server" OnClientClick="return show_deleteCustomer_InitialModal(this);"/>
+                        </div>
+                        <div class="btn-group mr-5" role="group" style="width:430px">
+                            <asp:Button CssClass="btn btn-outline-info btn-lg" ID="btnListCustomers" Text="List All Customers" runat ="server" onClick="btn_listCustomers"/>
+                        </div></div>
+                    
+                </div>
+            </div>
+            <div class="card card2" style="width: 13%;height: 90vh;background-color: rgba(128, 128, 128, 0.747);">
+                <div class="my-auto mx-md-5 px-md-5 right">
+                </div>
+            </div>
+            
         </div>
-    <div class="content-2">
-    <div class="btn-toolbar px-5" role="toolbar"> 
-        <div class="btn-group mr-5" role="group" style="width:360px">
-            <asp:Button class="btn btn-primary py-3 px-5 rounded" ID="btnDeleteCustomer" Text="Delete Customer" runat ="server" OnClientClick="return show_deleteCustomer_InitialModal(this);"/>
     </div>
-        <div class="btn-group mr-5" role="group" style="width:350px">
-            <asp:Button class="btn btn-primary py-3 px-5 rounded" ID="btnListCustomers" Text="List All Customers" runat ="server" onClick="btn_listCustomers"/>
-            </div></div>
-        </div>
+</div>
 
 <div class ="addNewCustomerPopUp">          
     <div id="AddNewCustomer_modalPopUp" class="modal fade" role="form">

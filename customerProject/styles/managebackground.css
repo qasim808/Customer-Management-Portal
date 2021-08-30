@@ -1,21 +1,31 @@
-.content-1{
-    margin:auto;
-    position:relative;
-    padding-left: 200px;
-    padding-top: 200px;
+body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background-image: linear-gradient(to right, #1c5968, #f8f8f8);
+    background-repeat: no-repeat
 }
-
-.content-2{
-    margin:auto;
-    position:relative;
-    padding-left: 200px;
-    padding-top:    50px;
+@keyframes animateMainDiv {
+    0%   {opacity: -1; left:0px; top:-200px;}
+    25%   {opacity: 0; left:0px; top:-200px;}
+    100% {left:0px; top:0px}
+    
 }
-
-body{
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(38,199,149,1) 35%, rgba(29,202,173,1) 50%, rgba(30,202,171,1) 79%, rgba(0,212,255,1) 100%);
-    background-size: cover;
-    background-position: center;
-    height: 100%; 
+.container {
+    position: relative;
+    animation-name: animateMainDiv;
+    animation-duration: 2s;
+}
+.my-5{
+    margin-top:100px;
+}
+.btn-outline-info{
+    width: 430px;
+    height: 200px;
+    border:0px 0.5px solid rgba(128, 128, 128, 0.452);
+    transition: all 0.3s ease 0s;
+}
+.btn:hover{
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    transform: translateY(-7px);
 }

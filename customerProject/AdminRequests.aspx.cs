@@ -55,7 +55,6 @@ namespace customerProject
                 if (e.CommandName == "Approve")
                 {
                     //Determine the RowIndex of the Row whose Button was clicked.
-
                     if (SqlHelper.executeAdminSPs("addToMasterLogin", new string[] { email, password }))
                     {
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "AnyType", "completeForm();", true);
