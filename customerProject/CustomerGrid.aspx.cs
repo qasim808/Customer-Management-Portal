@@ -13,31 +13,101 @@ namespace customerProject
     {
         protected int currentPageNo = 0;
         protected int rows;
+        string occupiedButton = "btn btn-info ml-1";
+        string unOccupiedButton = "btn btn-outline-info ml-1";
         protected void Page_Load(object sender, EventArgs e)
         {
-            DataAccess sqlHelper = new DataAccess();
-            SqlDataReader reader = sqlHelper.executeFetchQuery("SELECT COUNT(*) FROM CUSTOMERS");
-            if (reader.Read())
-            {
-                rows = Int32.Parse(reader.GetValue(0).ToString());
-            }
-            /* if (Session["UserName"]  == null || Session["pwd"] == null)
-             {
-                 Response.Redirect("~/Login");
-             }
-
-             else*/
             if (!this.IsPostBack)
             {
-                this.BindGrid();
+                errorLabel.Text = "Please select offset to load the grid.";
+                errorLabel.Visible = true;
+                errorLabel.CssClass = "display-4 text-center";
+                currentPg.Visible = false;
+                amtOfButtons.Visible = false;
+                pageOffset.Visible = false;
+                DataAccess sqlHelper = new DataAccess();
+                int rows = sqlHelper.getTotalRowCount();
+                //Display 5 options
+                int totalNumOfOptions = 5;
+                int choiceJump = rows / totalNumOfOptions;
+                for (int i = choiceJump; i <= rows; i = i + choiceJump)
+                {
+                    ListItem optionToList = new ListItem(i.ToString(), i.ToString());
+                    selectPageSize.Items.Add(optionToList);
+                }
+                ListItem totalRows = new ListItem(rows.ToString(), rows.ToString());
+                selectPageSize.Items.Add(totalRows);
+                /*this.BindGrid();
                 currentPg.Visible = false;
                 pageNumber.CssClass = "col-md-auto";
-                pageNumber.Text = "Page - 1/" + ((rows / 5) + 1).ToString();
+                pageNumber.Text = "Page - 1/" + ((rows / 5) + 1).ToString();*/
             }
-            
+            else
+            {
+                if (amtOfButtons != null && amtOfButtons.Text != "")
+                    createButtons(Int32.Parse(pageOffset.Text));
+            }
 
         }
-        protected bool BindGrid()
+        protected void createButtons(int selectedSize)
+        {
+            DataAccess sqlHelper = new DataAccess();
+            int rows = sqlHelper.getTotalRowCount();
+            decimal amtOfPages = Math.Ceiling((decimal)rows / selectedSize);
+            placeHolderForButtons.Controls.Clear();
+            for (int i=1; i<=(int)amtOfPages; i++)
+            {
+                Button newBtn = new Button();
+                newBtn.Text = i.ToString();
+                newBtn.CssClass = unOccupiedButton;
+                newBtn.Attributes.Add("runat", "server");
+                newBtn.Click += new EventHandler(this.handleIndexBtn_Click);
+                placeHolderForButtons.Controls.Add(newBtn);
+            }
+            amtOfButtons.Text = amtOfPages.ToString();
+        }
+        protected void BindGrid(int pageNo, int selectedSize)
+        {
+            DataAccess SqlHelper = new DataAccess();
+            DataTable table = SqlHelper.customerGridSP(pageNo-1, selectedSize);
+            using (table)
+            {
+                customerGrid.DataSource = table;
+                customerGrid.DataBind();
+            }
+            if (errorLabel.Visible)
+                errorLabel.Visible = false;
+        }
+        protected void loadBtn_BtnClick(object sender, EventArgs e)
+        {
+            int selectedSize = Int32.Parse(selectPageSize.SelectedValue);
+            pageOffset.Text = selectedSize.ToString();
+            BindGrid(1, selectedSize);
+            createButtons(selectedSize);
+            Button temp = (Button)placeHolderForButtons.Controls[0];
+            temp.CssClass = occupiedButton;
+        }
+        protected void handleIndexBtn_Click(object sender, EventArgs e)
+        {
+            Button temp = new Button();
+            temp = (Button)sender;
+            setRemainderButtonsBlank(Int32.Parse(temp.Text));
+            temp.CssClass = occupiedButton;
+            BindGrid(Int32.Parse(temp.Text), Int32.Parse(pageOffset.Text));
+        }
+        protected void setRemainderButtonsBlank (int index) {
+            for (int i = index-1; i >= 0; i--)
+            {
+                Button btn_temp = (Button)placeHolderForButtons.Controls[i];
+                btn_temp.CssClass = unOccupiedButton;
+            }
+            for (int i=index-1; i<placeHolderForButtons.Controls.Count; i++)
+            {
+                Button btn_temp = (Button)placeHolderForButtons.Controls[i];
+                btn_temp.CssClass = unOccupiedButton;
+            }
+        }
+        /*protected bool BindGrid()
         {
             DataAccess sqlHelper = new DataAccess();
             DataTable dataTable = sqlHelper.customerGridSP(currentPageNo);
@@ -180,6 +250,6 @@ namespace customerProject
             BindGrid();
             currentPg.Text = currentPageNo.ToString();
             pageNumber.Text = "Page - " + ((rows / 5) + 1).ToString() + "/" + ((rows / 5) + 1).ToString();
-        }
+        }*/
     }
 }

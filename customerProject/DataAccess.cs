@@ -108,11 +108,12 @@ namespace customerProject
                 }
             }
         }
-        public DataTable customerGridSP(int pageNo)
+        public DataTable customerGridSP(int pageNo, int pageOffSet)
         {
             SqlCommand cmd = new SqlCommand("getPagedNextData", dbConn);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@pageNo", pageNo);
+            cmd.Parameters.AddWithValue("@pageOffSet", pageOffSet);
             using (cmd)
             {
                 using (SqlDataAdapter adapt = new SqlDataAdapter())
@@ -164,7 +165,20 @@ namespace customerProject
                 }
             }
         }
-        
+
+        public int getTotalRowCount()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM customers", dbConn);
+            isConnectionOpen();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read() && reader.HasRows)
+                {
+                    return reader.GetInt32(0);
+                }
+                return 0;
+            }
+        }
         public DataAccess()
         {
             var connectionFromConfiguration = WebConfigurationManager.ConnectionStrings["DBConn"];

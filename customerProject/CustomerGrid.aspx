@@ -3,9 +3,12 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" style="position:relative;">
     <link rel="stylesheet" href="styles/customerGrid.css" type="text/css" media="screen" />
-    <br /><br /><br />
+    <hr />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <body>
+    <asp:DropDownList ID="selectPageSize" runat="server" CssClass="btn btn-secondary dropdown-toggle" />
+    <asp:Button ID="loadGrid" CssClass="btn btn-primary" runat="server" Text="Load" OnClick="loadBtn_BtnClick"/>
+    <br /><br /><hr />
     <asp:Label ID="errorLabel" runat="server" />
     <asp:GridView ID ="customerGrid" runat="server" AutoGenerateColumns="false" CssClass="customerGrid">
         <Columns>
@@ -17,12 +20,12 @@
         </Columns>
     </asp:GridView>
     <br /><br />
+    <asp:PlaceHolder runat="server" ID="placeHolderForButtons"></asp:PlaceHolder>
     <asp:Button ID ="currentPg" CssClass="pgNoHolder" Text="0" runat="server" />
-    <asp:Button ID="firstPage" CssClass="btn btn-outline-danger" runat="server" Text="1" OnClick="firstpg_BtnClick"/>
-    <asp:Button ID="prevPage" CssClass="btn btn-outline-danger" runat="server" Text="Prev." OnClick="prevpg_BtnClick"/>
-    <asp:Button ID="nextPage" CssClass="btn btn-outline-success" runat="server" Text="Next" OnClick="nxtPg_BtnClick"/>
-    <asp:Button ID="lastPage" CssClass="btn btn-outline-success" runat="server" Text=">>" OnClick="lastpg_BtnClick"/>
-    <asp:Label ID="pageNumber" runat="server" />
+    <asp:Label ID="amtOfButtons" Text="" runat="server"/>
+    <asp:Label ID="pageOffset" runat="server" />
+
+
 </body>
 </html>
 </asp:Content>

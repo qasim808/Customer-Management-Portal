@@ -15,6 +15,24 @@ namespace customerProject
     {
 
         /// <summary>
+        /// selectPageSize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList selectPageSize;
+
+        /// <summary>
+        /// loadGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button loadGrid;
+
+        /// <summary>
         /// errorLabel control.
         /// </summary>
         /// <remarks>
@@ -33,6 +51,15 @@ namespace customerProject
         protected global::System.Web.UI.WebControls.GridView customerGrid;
 
         /// <summary>
+        /// placeHolderForButtons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder placeHolderForButtons;
+
+        /// <summary>
         /// currentPg control.
         /// </summary>
         /// <remarks>
@@ -42,48 +69,21 @@ namespace customerProject
         protected global::System.Web.UI.WebControls.Button currentPg;
 
         /// <summary>
-        /// firstPage control.
+        /// amtOfButtons control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button firstPage;
+        protected global::System.Web.UI.WebControls.Label amtOfButtons;
 
         /// <summary>
-        /// prevPage control.
+        /// pageOffset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button prevPage;
-
-        /// <summary>
-        /// nextPage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button nextPage;
-
-        /// <summary>
-        /// lastPage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button lastPage;
-
-        /// <summary>
-        /// pageNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pageNumber;
+        protected global::System.Web.UI.WebControls.Label pageOffset;
     }
 }
